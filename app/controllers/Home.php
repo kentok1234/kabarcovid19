@@ -5,7 +5,9 @@ class Home extends Controller {
 
         $data['title'] = 'Homepage';
 
-        $this->view('home/index', $data);
+        $this->view('templates/head', $data);
+        $this->view('home/index');
+        $this->view('templates/footer');
     }
 }
 ?>
