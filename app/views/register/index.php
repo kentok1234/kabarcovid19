@@ -42,17 +42,22 @@
 
 ?>
 
-<div class="container" style="margin: 0%; padding: 0%;">
+<div class="container-fluid">
     <div class="row">
         <div class="col p-3 bg-primary text-white">
+            <div class="container vh-100 d-flex ">
+                <div class="w-100  align-self-center">
+                    <h1 style="font-size: 4.5em; font-family: Pacifico; text-align:center;">Kabar.Covid-19</h1>
+                    <p style="text-align:center;font-size: 1.5em;">Website Information About Coronavirus</p>
+                </div>
+            </div>
         </div>
         <div class="col">
-            <div class="container vh-100 d-flex justify-content-center">
-                <form class="w-100  align-self-center" action="" method="POST" style="width: 90%;">
+            <div class="container vh-100 d-flex ">
+                <form class="w-100  align-self-center" action="" method="POST">
                     <h3>Halaman Registrasi</h3>
                     <div class="form-group">
                         <label for="exampleInputUsername">Username</label>
-
                         <?php if (!($data['error'])): ?>
                             <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" required>
                         <?php endif; ?>
@@ -61,6 +66,30 @@
                         <input type="text" class="form-control is-invalid" name="username" aria-describedby="emailHelp">
                         <div class="invalid-feedback">
                             Username tidak boleh kosong!
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputUsia">Usia</label>
+                        <?php if (!($data['error'])): ?>
+                            <input type="text" class="form-control" id="Usia" name="Usia" required>
+                        <?php endif; ?>
+                        <?php if ($data['error']): ?>
+                        <input type="text" class="form-control is-invalid" name="Usia" required>
+                        <div class="invalid-feedback">
+                            Usia tidak boleh kosong!
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputAsalProvinsi">Asal Provinsi</label>
+                        <?php if (!($data['error'])): ?>
+                            <input type="text" class="form-control" id="AsalProvinsi" name="AsalProvinsi" required>
+                        <?php endif; ?>
+                        <?php if ($data['error']): ?>
+                        <input type="text" class="form-control is-invalid" name="AsalProvinsi" required>
+                        <div class="invalid-feedback">
+                            Asal Provinsi tidak boleh kosong!
                         </div>
                         <?php endif; ?>
                     </div>
@@ -77,7 +106,6 @@
                             Password tidak boleh kosong!
                         </div>
                         <?php endif; ?>
-
                     </div>
                     <div class="form-group">
                         <label for="exampleInputKonfirmasiPassword1">Konfirmasi Password</label>
@@ -92,7 +120,6 @@
                             Konfirmasi Password tidak boleh kosong!
                         </div>
                         <?php endif; ?>
-
                     </div>
                     <div class="form-group">
                         <label for="fotoProfil">Foto Profil</label>
