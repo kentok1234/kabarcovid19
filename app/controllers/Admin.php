@@ -15,7 +15,9 @@ class Admin extends Controller {
             }
         }
 
+        $this->view('templates/head');
         $this->view('admin/index');
+        $this->view('templates/footer');
     }
 }
 

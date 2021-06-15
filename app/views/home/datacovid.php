@@ -11,20 +11,26 @@
                 <a class="nav-link" href="<?= BASEURL; ?>public/home">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= BASEURL; ?>public/datacovid">Data Covid</a>
+                <a class="nav-link" href="<?= BASEURL; ?>public/home/datacovid">Data Covid</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= BASEURL; ?>public/berita">Berita</a>
+                <a class="nav-link" href="<?= BASEURL; ?>public/home/berita">Berita</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= BASEURL; ?>public/tentang">Tentang</a>
+                <a class="nav-link" href="<?= BASEURL; ?>public/home/tentang">Tentang</a>
             </li>
+            <?php if(isset($data['logout'])): ?>
+            <li class="nav-item">
+                <a class="nav-link"href="<?= BASEURL; ?>public/logout">Logout</a>
+            </li>
+            <?php else:?>
             <li class="nav-item">
                 <a class="nav-link"href="<?= BASEURL; ?>public/login">Login</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?= BASEURL; ?>public/register">Daftar</a>
             </li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>

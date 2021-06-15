@@ -12,8 +12,6 @@
     }
 </style>
 
-<!-- Nav start -->
-
 <nav class="navbar navbar-expand-xl navbar-light bg-light" id="navbarScroll">
     <a class="navbar-brand" href="<?= BASEURL; ?>public/home" style="font-size: 1.5em; font-family: Pacifico;">Kabar.Covid-19</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,25 +23,29 @@
                 <a class="nav-link" href="<?= BASEURL; ?>public/home">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= BASEURL; ?>public/datacovid">Data Covid</a>
+                <a class="nav-link" href="<?= BASEURL; ?>public/home/datacovid">Data Covid</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= BASEURL; ?>public/berita">Berita</a>
+                <a class="nav-link" href="<?= BASEURL; ?>public/home/berita">Berita</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= BASEURL; ?>public/tentang">Tentang</a>
+                <a class="nav-link" href="<?= BASEURL; ?>public/home/tentang">Tentang</a>
             </li>
+            <?php if(isset($data['logout'])): ?>
+            <li class="nav-item">
+                <a class="nav-link"href="<?= BASEURL; ?>public/logout">Logout</a>
+            </li>
+            <?php else:?>
             <li class="nav-item">
                 <a class="nav-link"href="<?= BASEURL; ?>public/login">Login</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?= BASEURL; ?>public/register">Daftar</a>
             </li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>
-
-<!-- end nav -->
 
 <div class="container">
     <div id="carouselExampleIndicators" class="carousel slide mt-4" data-ride="carousel">
