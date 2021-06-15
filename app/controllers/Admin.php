@@ -15,7 +15,9 @@ class Admin extends Controller {
             }
         }
 
-        $this->view('templates/head');
+        $data['title'] = 'Halaman admin';
+
+        $this->view('templates/head', $data);
         $this->view('admin/index');
         $this->view('templates/footer');
     }

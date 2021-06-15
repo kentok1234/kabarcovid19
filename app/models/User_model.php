@@ -15,6 +15,12 @@ class User_model {
         return $this->db->singleSet();
     }
 
+    public function getDataUserbyID($id) {
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE userid=:id;');
+        $this->db->bind('id', $id);
+        return $this->db->singleSet();
+    }
+
     public function setDataUser($username, $password, $picture="") {
         $this->db->query("INSERT INTO " . $this->table . " VALUES('', :username, :password, :foto_profil);");
         $this->db->bind('username', $username);

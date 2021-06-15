@@ -14,5 +14,12 @@ class Operator_model {
         
         return $this->db->singleSet(); 
     }
+
+    public function getDataOperatorbyID($id) {
+        $this->db->query("SELECT * FROM " . $this->table . " WHERE id=:id;");
+        $this->db->bind('id', $id);
+        
+        return $this->db->singleSet(); 
+    }
 }
 ?>

@@ -4,6 +4,30 @@ session_start();
 
 class Login extends Controller {
     public function index() {
+        if(isset($_COOKIE['USID']) AND isset($_COOKIE['KEY']) AND isset($_COOKIE['ROLE'])) {
+            $id = $_COOKIE['USID'];
+            $key = $_COOKIE['KEY'];
+            $role = $_COOKIE['ROLE'];
+
+            if($role == 'admin') {
+                $data = $this->model('Operator_model');
+                $result = $data->getDataOperatorbyID($id);
+
+                if ($key == hash('md5', $result['username'])) {
+                    $_SESSION['login'] = 'admin';
+                }
+            }
+            else {
+                $data = $this->model('User_model');
+                $result = $data->getDataUserbyID($id);
+
+                if ($key == hash('md5', $result['username'])) {
+                    $_SESSION['login'] = 'user';
+                }
+            }
+
+        }
+
         
         if(isset($_SESSION['login'])) {
             if($_SESSION['login'] == 'admin') {
@@ -22,7 +46,7 @@ class Login extends Controller {
         if (isset($_POST['login'])) {
             $loginvalidation = $this->login_validation();
 
-            if ($loginvalidation[0]) {
+            if (!is_null($loginvalidation)) {
                 if($loginvalidation[1] == 'admin') {
                     $_SESSION['login'] = 'admin';
                     header('Location:'. BASEURL .'public/admin');
@@ -51,14 +75,31 @@ class Login extends Controller {
         $password = $this->validate_data($_POST["password"]);
 
         $result = [$data->getDataOperator($username, $password), 'admin'];
-        
+    
         if(!$result[0]) {
             $data = $this->model('User_model');
+            $result = [$data->getDataUser($username, $password), 'user'];
 
-            return [$data->getDataUser($username, $password), 'user'];
+            if($result[0]) {
+                if(isset($_POST['remember'])) {
+                    setcookie('USID', $result[0]['userid'], time()+60*60);
+                    setcookie('KEY', hash('md5', $result[0]['username']), time()+60*60);
+                    setcookie('ROLE', 'user', time()+60*60);
+                }
+    
+                return $result;
+            }
         }
 
-        return $result;
+        if($result[0]) {
+            if(isset($_POST['remember'])) {
+                setcookie('USID', $result[0]['id'], time()+60*60);
+                setcookie('KEY', hash('md5', $result[0]['username']), time()+60*60);
+                setcookie('ROLE', 'admin', time()+60*60);
+            }
+    
+            return $result;
+        }
 
     }
 
