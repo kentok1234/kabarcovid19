@@ -1,18 +1,42 @@
 <?php
 
+session_start();
+
 class Login extends Controller {
     public function index() {
         
+        if(isset($_SESSION['login'])) {
+            if($_SESSION['login'] == 'admin') {
+                header('Location:'. BASEURL .'public/admin');
+                exit;
+            }
+            else {
+                header('Location:'. BASEURL .'public/home');
+                exit;
+            }
+        }
+
         $data['title'] = "Login";
         $data['error'] = False;
-        $loginvalid = $this->login_validation();
 
-        if ($loginvalid) {
-            header('Location:http://localhost/latihan/kabarcovid19/public/home');
-            exit;
-        }
-        else if (isset($_POST['login'])) {
-            $data['error'] = True;
+        if (isset($_POST['login'])) {
+            $loginvalidation = $this->login_validation();
+
+            if ($loginvalidation[0]) {
+                if($loginvalidation[1] == 'admin') {
+                    $_SESSION['login'] = 'admin';
+                    header('Location:'. BASEURL .'public/admin');
+                    exit;
+                }
+                else if ($loginvalidation[1] == 'user'){
+                    $_SESSION['login'] = 'user';
+                    header('Location:'. BASEURL .'public/home');
+                    exit;
+                }
+            }
+            else {
+                $data['error'] = True;
+            }
         }
 
         $this->view('templates/head', $data);
@@ -23,13 +47,18 @@ class Login extends Controller {
     public function login_validation() {
         $data = $this->model('Operator_model');
 
-        if (isset($_POST['login'])) {
-            $username = $this->validate_data($_POST["username"]);
-            $password = $this->validate_data($_POST["password"]);
+        $username = $this->validate_data($_POST["username"]);
+        $password = $this->validate_data($_POST["password"]);
 
-            $result = $data->getDataOperator($username, $password);
-            return $result;
+        $result = [$data->getDataOperator($username, $password), 'admin'];
+        
+        if(!$result[0]) {
+            $data = $this->model('User_model');
+
+            return [$data->getDataUser($username, $password), 'user'];
         }
+
+        return $result;
 
     }
 

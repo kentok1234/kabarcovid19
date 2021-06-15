@@ -17,12 +17,18 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?= BASEURL; ?>public/tentang">Tentang</a>
             </li>
+            <?php if(isset($data['logout'])): ?>
+            <li class="nav-item">
+                <a class="nav-link"href="<?= BASEURL; ?>public/logout">Logout</a>
+            </li>
+            <?php else:?>
             <li class="nav-item">
                 <a class="nav-link"href="<?= BASEURL; ?>public/login">Login</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?= BASEURL; ?>public/register">Daftar</a>
             </li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>
