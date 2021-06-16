@@ -1,7 +1,5 @@
 <?php 
 
-session_start();
-
 class Home extends Controller {
     public function index() {
 
@@ -12,7 +10,6 @@ class Home extends Controller {
         }
 
         $data['title'] = 'Homepage';
-
         $this->view('templates/head', $data);
         $this->view('home/index', $data);
         $this->view('templates/footer');

@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 class Login extends Controller {
     public function index() {
         if(isset($_COOKIE['USID']) AND isset($_COOKIE['KEY']) AND isset($_COOKIE['ROLE'])) {
@@ -75,7 +73,7 @@ class Login extends Controller {
         $password = $this->validate_data($_POST["password"]);
 
         $result = [$data->getDataOperator($username, $password), 'admin'];
-    
+
         if(!$result[0]) {
             $data = $this->model('User_model');
             $result = [$data->getDataUser($username, $password), 'user'];
@@ -86,6 +84,7 @@ class Login extends Controller {
                     setcookie('KEY', hash('md5', $result[0]['username']), time()+60*60);
                     setcookie('ROLE', 'user', time()+60*60);
                 }
+                $_SESSION['id'] = $result[0]['userid'];
     
                 return $result;
             }
@@ -97,6 +96,7 @@ class Login extends Controller {
                 setcookie('KEY', hash('md5', $result[0]['username']), time()+60*60);
                 setcookie('ROLE', 'admin', time()+60*60);
             }
+            $_SESSION['id'] = $result[0]['id'];
     
             return $result;
         }

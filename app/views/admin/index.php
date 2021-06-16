@@ -2,8 +2,8 @@
         <div class="row vh-100">
             <div class="col-sm shadow-sm" style="background-color:#007bff; Max-width: 20%;">
                 <h4 style="margin-top: 10%; margin-bottom: 20%; text-align: center; font-family: Pacifico; color:white;">Admin Kabar Covid-9</h4>
-                <img class="mx-auto d-block" src="foto.jpg" alt="" style=" justify-content: center; border-radius: 50%; margin-bottom: 20%;" width="50%;">
-                <p style="text-align: center;">Nama</p>
+                <img class="mx-auto d-block" src="<?= 'data:image/jpeg;base64, ' . base64_encode($data['admin']['foto_profil']); ?>" alt="" style=" justify-content: center; border-radius: 50%; margin-bottom: 20%;" width="50%;">
+                <p style="text-align: center;"><?= $data['admin']['username'] ?></p>
             </div>
             <div class="col-xl" style="Max-width: 80%; padding: 0%;">
                 <nav class="navbar navbar-expand-xl navbar-light bg-light shadow-sm" id="navbarScroll" >
@@ -38,6 +38,9 @@
                     <div class="container">
                         <h2 class="display-4" style="margin-bottom: 0.2em;">Data User</h2>
                         <div class="container">
+                            <div class="row">
+                            <?php Flasher::flash(); ?>
+                            </div>
                             <table class="table table-striped">
                                 <thead>
                                     <tr style="text-align: center;">
@@ -49,20 +52,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php 
+                                    $no = 1;
+                                    foreach($data['user'] as $user):
+                                    ?>
                                     <tr>
-                                        <th scope="row" style="text-align: center;">1</th>
-                                        <td style="text-align: center;">Xxxx</td>
-                                        <td style="text-align: center;">19</td>
-                                        <td style="text-align: center;">Jawa Timur</td>
-                                        <td style="text-align: center;">Hapus</td>
+                                        <th scope="row" style="text-align: center;"><?= $no; ?></th>
+                                        <td style="text-align: center;"><?= $user['username']; ?></td>
+                                        <td style="text-align: center;"><?= $user['usia']; ?></td>
+                                        <td style="text-align: center;"><?= $user['provinsi']; ?></td>
+                                        <td style="text-align: center;"><a class="badge badge-pill badge-danger" href="<?= BASEURL . 'public/admin/deleteDataUser/' . $user['userid']; ?>" onclick="return confirm('Apakah ingin menghapus data tersebut?')">Hapus</a></td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row" style="text-align: center;">1</th>
-                                        <td style="text-align: center;">Xxxx</td>
-                                        <td style="text-align: center;">19</td>
-                                        <td style="text-align: center;">Jawa Timur</td>
-                                        <td style="text-align: center;">Hapus</td>
-                                    </tr>
+                                    <?php 
+                                    $no++;
+                                    endforeach; 
+                                    ?>
                                 </tbody>
                             </table>
                         </div>

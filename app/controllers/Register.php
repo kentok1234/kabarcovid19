@@ -6,9 +6,10 @@ class Register extends Controller {
         $data['title'] = "Daftar";
         $data['error'] = False;
         
-        if ($this->register_validation()) {
-            // header('Location:http://localhost/latihan/kabarcovid19/public');
-            // exit;
+        if ($this->register_validation()) {    
+            $_SESSION['login'] = 'user';
+            header('Location:http://localhost/latihan/kabarcovid19/public/login');
+            exit;
         }
         else if (isset($_POST['register'])){
             $data['error'] = True;
@@ -35,7 +36,9 @@ class Register extends Controller {
                 if ($password == $konfirm_password) {
                     $data = $this->model('User_model');
                     $data->setDataUser($username, $usia, $provinsi, $password, $picture[0], $picture[1], $picture[2]);
-                    // var_dump($picture);
+                    
+                    $_SESSION['id'] = $this->model('User_model')->getDataUser($username, $password)['userid'];
+
                     return True;
                 }
                 
