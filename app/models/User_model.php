@@ -21,11 +21,15 @@ class User_model {
         return $this->db->singleSet();
     }
 
-    public function setDataUser($username, $password, $picture="") {
-        $this->db->query("INSERT INTO " . $this->table . " VALUES('', :username, :password, :foto_profil);");
+    public function setDataUser($username, $usia, $provinsi, $password, $filename, $typename, $data) {
+        $this->db->query("INSERT INTO " . $this->table . " VALUES('', :username, :usia, :provinsi, :password, :filename, :typename, :data);");
         $this->db->bind('username', $username);
+        $this->db->bind('usia', $usia);
+        $this->db->bind('provinsi', $provinsi);
         $this->db->bind('password', $password);
-        $this->db->bind('foto_profil', $picture);
+        $this->db->bind('filename', $filename);
+        $this->db->bind('typename', $typename);
+        $this->db->bind('data', $data);
         $this->db->execute();
     }
 }

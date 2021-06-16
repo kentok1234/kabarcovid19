@@ -1,47 +1,3 @@
-<?php 
-// include "functions.php";
-
-// if( isset($_POST["register"])) {
-    
-//     $username = $_POST["username"];
-//     $password = $_POST["password"];
-//     $konfirmasiPassword = $_POST["konfirmasiPassword"];
-//     $fotoProfil = $_POST["fotoProfil"];
-
-//     if (strlen($_POST["username"]) AND ($_POST["password"]) AND ($_POST["konfirmasiPassword"]) AND ($_POST["fotoProfil"]) != 0) {
-//         if ( registrasi($_POST) > 0) {
-//             echo "<script class='alert alert-secondary' role='alert'>
-//                     alert('user baru berhasil ditambahkan');
-//                 </script>";
-//             header("Location: login.php");
-//             exit;
-//         } else {
-//             echo mysqli_error(($conn));
-//         }
-//     }
-    
-
-//     if (strlen($username)  == 0) {
-//         $usernamekosong = 1;
-//     }
-
-//     if (strlen($konfirmasiPassword)  == 0) {
-//         $konfirmasiPasswordkosong = 1;
-//     }
-
-//     if (strlen($password)  == 0) {
-//         $passwordkosong = 1;
-//     }
-
-//     if (strlen($fotoProfil)  == 0) {
-//         $fotoProfilkosong = 1;
-//     }
-    
-// }
-
-
-?>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col p-3 bg-primary text-white">
@@ -54,7 +10,7 @@
         </div>
         <div class="col">
             <div class="container vh-100 d-flex ">
-                <form class="w-100  align-self-center" action="" method="POST">
+                <form class="w-100  align-self-center" action="" method="POST" enctype="multipart/form-data">
                     <h3>Halaman Registrasi</h3>
                     <div class="form-group">
                         <label for="exampleInputUsername">Username</label>
@@ -72,10 +28,10 @@
                     <div class="form-group">
                         <label for="exampleInputUsia">Usia</label>
                         <?php if (!($data['error'])): ?>
-                            <input type="text" class="form-control" id="Usia" name="Usia" required>
+                            <input type="number" class="form-control" id="usia" name="usia" required>
                         <?php endif; ?>
                         <?php if ($data['error']): ?>
-                        <input type="text" class="form-control is-invalid" name="Usia" required>
+                        <input type="number" class="form-control is-invalid" name="usia" required>
                         <div class="invalid-feedback">
                             Usia tidak boleh kosong!
                         </div>
@@ -84,10 +40,10 @@
                     <div class="form-group">
                         <label for="exampleInputAsalProvinsi">Asal Provinsi</label>
                         <?php if (!($data['error'])): ?>
-                            <input type="text" class="form-control" id="AsalProvinsi" name="AsalProvinsi" required>
+                            <input type="text" class="form-control" id="asalprovinsi" name="asalprovinsi" required>
                         <?php endif; ?>
                         <?php if ($data['error']): ?>
-                        <input type="text" class="form-control is-invalid" name="AsalProvinsi" required>
+                        <input type="text" class="form-control is-invalid" name="asalprovinsi" required>
                         <div class="invalid-feedback">
                             Asal Provinsi tidak boleh kosong!
                         </div>
@@ -123,7 +79,7 @@
                     </div>
                     <div class="form-group">
                         <label for="fotoProfil">Foto Profil</label>
-                        <input type="file" class="form-control-file" name="fotoProfil" id="fotoProfil">
+                        <input type="file" class="form-control-file" name="fotoProfil" id="fotoProfil" accept="image/png, image/jpeg">
                         <!-- <input type="file" class="form-control-file is-invalid" name="fotoProfil" id="fotoProfil">
                         <div class="invalid-feedback">
                             Foto profil tidak boleh kosong!
