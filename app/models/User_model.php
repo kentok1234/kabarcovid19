@@ -39,6 +39,19 @@ class User_model {
         $this->db->execute();
     }
 
+    public function updateDataUser($username, $usia, $provinsi, $password, $filename, $typename, $data, $id) {
+        $this->db->query("UPDATE " . $this->table . ' SET username=:username, usia=:usia, provinsi=:provinsi, password=:password, nama_foto=:filename, tipe_foto=:typename, foto_profil=:data WHERE userid=:id');
+        $this->db->bind('username', $username);
+        $this->db->bind('usia', $usia);
+        $this->db->bind('provinsi', $provinsi);
+        $this->db->bind('password', $password);
+        $this->db->bind('filename', $filename);
+        $this->db->bind('typename', $typename);
+        $this->db->bind('data', $data);
+        $this->db->bind('id', $id);
+        $this->db->execute();
+    }
+
     public function deleteDataUser($id) {
         $this->db->query('DELETE FROM ' . $this->table . ' WHERE userid=:id');
         $this->db->bind('id', $id);

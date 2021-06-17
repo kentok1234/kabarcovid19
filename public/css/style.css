@@ -26,3 +26,24 @@
     grid-column-gap: 64px;
     grid-column: 2;
 }
+
+/* User profile */
+.nav-profile .editprofil {
+    display: block;
+    width:120px;
+    color:black;
+    background-color: #FFC93C;
+    margin:10px auto;
+    cursor: pointer;
+}
+
+.profile {
+    background-color: #0061A8;
+}
+
+.nav-profile {
+    width: 100%;
+}
+.nav-profile .nav .nav-link {
+    text-align: center;
+}

@@ -12,7 +12,7 @@
     }
 </style>
 
-<nav class="navbar navbar-expand-xl navbar-dark" id="navbarScroll">
+<nav class="navbar sticky-top navbar-expand-xl navbar-dark" id="navbarScroll">
     <a class="navbar-brand" href="<?= BASEURL; ?>public/home" style="font-size: 1.5em; font-family: Pacifico;">Kabar.Covid-19</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,10 @@
             </li>
             <?php if(isset($data['logout'])): ?>
             <li class="nav-item">
-                <a class="nav-link"href="<?= BASEURL; ?>public/logout">Logout</a>
+                <a class="nav-link" href="<?= BASEURL; ?>public/home/user/">Profil</a>
+            </li>
+            <li class="nav-item ml-2">
+                <a class="btn"href="<?= BASEURL; ?>public/logout">Logout</a>
             </li>
             <?php else:?>
             <li class="nav-item">

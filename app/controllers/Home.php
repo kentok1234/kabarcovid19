@@ -81,5 +81,93 @@ class Home extends Controller {
         $this->view('templates/footer');
     }
 
+    public function user() {
+        if(!isset($_SESSION['login'])) {
+            header("Location:" . BASEURL . 'public/home');
+            exit;
+        }
+
+        if(isset($_SESSION['login'])) {
+            if($_SESSION['login'] == 'user') {
+                $data['logout'] = True;
+            }
+        }
+
+        if ($this->updateUserValidation()) {    
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location:' . BASEURL . 'public/home/user');
+            exit;
+        }   
+        else if (isset($_POST['update'])){
+            $data['error'] = True;
+        }
+
+        $data['title'] = 'Profil Pengguna';
+
+        $data['user'] = $this->getUser();
+
+        $this->view('templates/head', $data);
+        $this->view('home/user/index', $data);
+        $this->view('templates/footer');
+    }
+
+    public function getUser() {
+        $data = $this->model('User_model');
+
+        return $data->getDataUserbyID($_SESSION['id']);
+    }
+
+    public function updateUserValidation() {
+        if (isset($_POST['update'])) {
+            $username = $this->validate_data($_POST['username']);
+            $password = $this->validate_data($_POST['password']);
+            $usia = $this->validate_data($_POST['usia']);
+            $provinsi = $this->validate_data($_POST['asalprovinsi']);
+            $konfirm_password = $this->validate_data($_POST['konfirmasiPassword']);
+            $picture = $this->getInfoFotoProfile($_FILES['fotoProfil']);
+            
+            if(empty($username) OR empty($password) OR empty($konfirm_password) OR empty($usia) OR empty($provinsi)) {
+                return False;
+            }
+            else {
+                if ($password == $konfirm_password) {
+                    $data = $this->model('User_model');
+                    $data->updateDataUser($username, $usia, $provinsi, $password, $picture[0], $picture[1], $picture[2], $_SESSION['id']);
+
+                    return True;
+                }
+                
+                return False;
+            }
+        }
+    }
+
+    public function validate_data($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
+    public function getInfoFotoProfile($data) {
+        if($data['error']) {
+            $user = $this->getUser();
+            $name = $user['nama_foto'];
+            $type = $user['tipe_foto'];
+            $content = $user['foto_profil'];
+        }
+        else {
+            $name = $data['name'];
+            $type = $data['type'];
+            $content = file_get_contents($data['tmp_name']);
+        }
+
+        return [$name, $type, $content];
+    }
+
+    public function getubah() {
+        echo json_encode($this->model('User_model')->getDataUserbyID($_POST['id']));
+    }
+
 }
 ?>
