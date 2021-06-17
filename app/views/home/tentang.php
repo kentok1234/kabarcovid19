@@ -1,15 +1,15 @@
-<nav class="navbar navbar-expand-xl navbar-light bg-light" id="navbarScroll">
+<nav class="navbar navbar-expand-xl navbar-dark" id="navbarScroll">
     <a class="navbar-brand" href="<?= BASEURL; ?>public/home" style="font-size: 1.5em; font-family: Pacifico;">Kabar.Covid-19</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end mr-md-3" id="navbarNav" >
         <ul class="navbar-nav" style="font-size: 1em;">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="<?= BASEURL; ?>public/home">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= BASEURL; ?>public/datacovid">Data Covid</a>
+                <a class="nav-link" href="<?= BASEURL; ?>public/home/datacovid">Data Covid</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?= BASEURL; ?>public/home/berita">Berita</a>
@@ -25,8 +25,8 @@
             <li class="nav-item">
                 <a class="nav-link"href="<?= BASEURL; ?>public/login">Login</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?= BASEURL; ?>public/register">Daftar</a>
+            <li class="nav-item ml-2">
+                <a class="btn" href="<?= BASEURL; ?>public/register">Daftar</a>
             </li>
             <?php endif; ?>
         </ul>

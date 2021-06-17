@@ -1,3 +1,28 @@
-.custom-select {
-    margin: 0 10px;
+.navbar {
+    background-color: #0061A8;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-link {
+    color: #FBE0C4;
+}
+
+.nav-item:last-child a {
+    display:inline-block;
+    background-color: #FFC93C;
+    width: 100px;
+    color:black;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+}
+
+.nav-item:last-child a:hover {
+    opacity: 1;
+}
+
+/* Berita */
+.berita-content {
+    display: grid;
+    grid-column-gap: 64px;
+    grid-column: 2;
 }
