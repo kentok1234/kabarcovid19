@@ -83,7 +83,7 @@
         <div class="row pt-4 mb-4">
         <div class="col text-center" style="color:#0066ff; margin:0;">
             <h2 style="margin-bottom: 0; font-size:2.5em;"><b>PENCEGAHAN</b></h2>
-            <h4 style="font-size:1.2em;">CORONAVIRUS Covid-19</h4>
+            <h4 style="font-size:1.2em;">CORONAVIRUS COVID-19</h4>
         </div>
         </div>
 
@@ -105,16 +105,19 @@
 </section>
 <section class="mt-4 mb-4" id="feedbackcovid">
     <div class="container">
-        <h2 class="mb-4">Feedback pengguna tentang covid-19</h2>
+        <div class="col text-center" style="color:#0066ff; margin:0;">
+            <h2 style="color:#0066ff;font-size:2.5em;"><b>FEEDBACK</b></h2>
+            <h4 style="font-size:1.2em;">PENGGUNA TENTANG COVID-19</h4>
+        </div>
         <div class="card-deck">
             <div class="row row-cols-3 row-cols-md-2">
                 <?php foreach($data['feedback'] as $feedback): ?>
                 <div class="col mb-4">
                     <div class="card">
-                        <img src="<?= 'data:image/jpeg;base64, ' . base64_encode($feedback['foto_profil']); ?>" class="card-img-top" alt="...">
+                        <img src="<?= 'data:image/jpeg;base64, ' . base64_encode($feedback['foto_profil']); ?>" class="mx-auto d-block" alt="..." style="width:100px; height:100px; border-radius: 50%; margin:2%;">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $feedback['username']; ?></h5>
-                            <p class="card-text"><?= $feedback['pesan'] ?></p>
+                            <h5 class="text-center"><?= $feedback['username']; ?></h5>
+                            <p class="text-justify"><?= $feedback['pesan'] ?></p>
                             <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
                         </div>
                     </div>
