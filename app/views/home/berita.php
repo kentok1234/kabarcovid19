@@ -116,7 +116,7 @@
             </div>
             <div class="berita-content">
                 <h3 class="berita-title"><a href="<?= $data['berita']->articles[$i]->url; ?>"><?= $data['berita']->articles[$i]->title; ?></a></h3>
-                <p class="berita-desc"><?= $data['berita']->articles[$i]->description; ?></p>
+                <p class="berita-desc text-justify"><?= $data['berita']->articles[$i]->description; ?></p>
             </div>
         </div>
         <?php endfor; ?>
