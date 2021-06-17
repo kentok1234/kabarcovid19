@@ -15,7 +15,7 @@
                 <!-- 404 Error Text -->
                 <div class="text-center">
                     <div class="error mx-auto"><img class="rounded mx-auto d-block" src="<?= BASEURL; ?>public/img/pagenotfound.svg" alt="pagenotfound" width="500"></div>
-                    <p class="lead text-gray-800 mb-4 mt-4">Halaman yang kamu cari tidak ada</p>
+                    <p class="lead text-gray-800 mb-4 mt-4">Login terlebih dahulu jika ingin memberi feedback ya!</p>
                     <a href="<?= BASEURL; ?>public/home">&larr; Kembali ke halaman utama</a>
                 </div>
             </div>

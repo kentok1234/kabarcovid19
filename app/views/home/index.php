@@ -103,32 +103,81 @@
         
     </div>
 </section>
-
-<section class="social" id="social" style="margin-bottom: 2%;">
+<section class="mt-4 mb-4" id="feedbackcovid">
     <div class="container">
-        <div class="row pt-4 mb-4">
-        <div class="col text-center">
-            <h2 style="color:#0066ff;font-size:2.5em;"><b>VIDEO EDUKASI COVID-19</b></h2>
+        <h2 class="mb-4">Feedback pengguna tentang covid-19</h2>
+        <div class="card-deck">
+            <div class="row row-cols-3 row-cols-md-2">
+                <?php foreach($data['feedback'] as $feedback): ?>
+                <div class="col mb-4">
+                    <div class="card">
+                        <img src="<?= 'data:image/jpeg;base64, ' . base64_encode($feedback['foto_profil']); ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $feedback['username']; ?></h5>
+                            <p class="card-text"><?= $feedback['pesan'] ?></p>
+                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+                    <!-- <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div> -->
+            </div>
         </div>
+        <div class="feedback-footer mt-4">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Beri kesanmu disini!
+            </button>
         </div>
-
-        <div class="row justify-content-center">
-        <div class="col-md-5">
-            <div class="row mt-1 pb-3">
-            <div class="col">
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/rg0W5baVWC0?rel=0" allowfullscreen></iframe>
-            </div>
-            </div>
-            </div>
-        </div>
-        <div class="col-md-5">
-            <div class="row mt-3 pb-3">
-            <div class="col">
-                    <h2>Awareness Raising COVID-19 yang Berkesetaraan Gender dan Inklusif</h2>
-                    <hr size="70" noshade>
-                    <p>Video Awareness Raising COVID-19 yang Berkesetaraan Gender dan Inklusif - Yayasan Plan International Indonesia dan Kementerian Kesehatan</p>
-            </div>
-            </div>
-        </div>
+    </div>
 </section>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Feedback tentang covid-19</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <?php if(isset($_SESSION['login'])): ?>
+        <form method="POST">
+            <div class="form-group">
+                <label for="pesanfeedback">Pesan atau kesan</label>
+                </br>
+                <textarea name="pesanfeedback" id="pesanfeedback" cols="50" rows="10" maxlength="255" required ></textarea>
+                <small id="pesanHelp" class="form-text text-muted">Beri tahu kepada mereka keluh kesahmu atau pesan tentang covid-19</small>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        <input type="submit" class="btn btn-primary" name='kirimpesan' value="Kirim feedbackmu">
+      </div>
+      </form>
+      <?php else: ?>
+        <p>Harap login terlebih dahulu jika ingin memberi pesan</p>
+      <?php endif; ?>
+    </div>
+  </div>
+</div>

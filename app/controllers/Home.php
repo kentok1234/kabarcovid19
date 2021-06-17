@@ -9,10 +9,30 @@ class Home extends Controller {
             }
         }
 
+        if(isset($_POST['kirimpesan'])) {
+            if(!$this->getDataPesan()) {
+                $data['error'] = True;
+            }
+        }
+
         $data['title'] = 'Homepage';
+        $data['feedback'] = $this->model('Feedback_model')->getDataFeedback();
+
         $this->view('templates/head', $data);
         $this->view('home/index', $data);
         $this->view('templates/footer');
+    }
+
+    public function getDataPesan() {
+        $id = $_SESSION['id'];
+        $pesan = $this->validate_data($_POST['pesanfeedback']);
+        
+        if(empty($pesan)) {
+            return 0;
+        }
+
+        $this->model('Feedback_model')->setDataFeedback($id, $pesan);
+        return 1;
     }
 
     public function datacovid() {
