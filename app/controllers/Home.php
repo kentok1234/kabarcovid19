@@ -119,7 +119,9 @@ class Home extends Controller {
             exit;
         }   
         else if (isset($_POST['update'])){
-            $data['error'] = True;
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location:' . BASEURL . 'public/home/user');
+            exit;
         }
 
         $data['title'] = 'Profil Pengguna';
