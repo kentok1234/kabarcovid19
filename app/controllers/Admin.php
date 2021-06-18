@@ -46,6 +46,13 @@ class Admin extends Controller {
         exit;
     }
 
+    public function deleteDataFeedback($id) {
+        $this->model('Feedback_model')->deleteDataFeedback($id);
+        Flasher::setFlash('berhasil', 'dihapus', 'danger');
+        header('Location:' . BASEURL . 'public/admin');
+        exit;
+    }
+
 }
 
 ?>
