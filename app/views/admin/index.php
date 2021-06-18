@@ -77,7 +77,7 @@
                                         <th scope="row" style="text-align: center;"><?= $i; ?></th>
                                         <td style="text-align: center;"><?= $feedback['username']; ?></td>
                                         <td style="text-align: center;"><?= $feedback['pesan'] ?></td>
-                                        <td style="text-align: center;"><a class="badge badge-pill badge-danger" href="<?= BASEURL . 'public/admin/deleteDataFeedback/' . $user['userid']; ?>" onclick="return confirm('Apakah ingin menghapus data tersebut?')"">Hapus</a></td>
+                                        <td style="text-align: center;"><a class="badge badge-pill badge-danger" href="<?= BASEURL . 'public/admin/deleteDataFeedback/' . $feedback['fedid']; ?>" onclick="return confirm('Apakah ingin menghapus data tersebut?')"">Hapus</a></td>
                                     </tr>
                                     <?php 
                                         $i++;

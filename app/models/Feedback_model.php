@@ -22,7 +22,7 @@ class Feedback_model {
     }
 
     public function deleteDataFeedback($id) {
-        $this->db->query('DELETE FROM ' . $this->table . ' WHERE userid=:id');
+        $this->db->query('DELETE FROM ' . $this->table . ' WHERE fedid=:id');
         $this->db->bind('id', $id);
         $this->db->execute();
     }
