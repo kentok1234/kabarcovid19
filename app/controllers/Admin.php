@@ -17,6 +17,7 @@ class Admin extends Controller {
 
         $data['admin'] = $this->getAdmin();
         $data['user'] = $this->getUser();
+        $data['feedback'] = $this->model('Feedback_model')->getDataFeedback();
 
         $this->view('templates/head', $data);
         $this->view('admin/index', $data);
@@ -38,6 +39,7 @@ class Admin extends Controller {
     }
 
     public function deleteDataUser($id) {
+        $this->model('Feedback_model')->deleteDataFeedback($id);
         $this->model('User_model')->deleteDataUser($id);
         Flasher::setFlash('berhasil', 'dihapus', 'danger');
         header('Location:' . BASEURL . 'public/admin');

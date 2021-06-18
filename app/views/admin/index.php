@@ -13,7 +13,7 @@
                     <div class="collapse navbar-collapse justify-content-end mr-md-3" id="navbarNav" >
                         <ul class="navbar-nav" style="font-size: 1em;">
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= BASEURL . 'public/logout' ?>">LogOut</a>
+                                <a class="btn nav-link" href="<?= BASEURL . 'public/logout' ?>">LogOut</a>
                             </li>
                         </ul>
                     </div>
@@ -74,7 +74,7 @@
                                         foreach($data['feedback'] as $feedback):
                                     ?>
                                     <tr>
-                                        <th scope="row" style="text-align: center;"><?= in; ?></th>
+                                        <th scope="row" style="text-align: center;"><?= $i; ?></th>
                                         <td style="text-align: center;"><?= $feedback['username']; ?></td>
                                         <td style="text-align: center;"><?= $feedback['pesan'] ?></td>
                                         <td style="text-align: center;">Hapus</td>

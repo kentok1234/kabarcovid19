@@ -111,6 +111,7 @@
         </div>
         <div class="card-deck">
             <div class="row row-cols-3 row-cols-md-2">
+            <?php if(isset($data['feedback'])): ?>
                 <?php foreach($data['feedback'] as $feedback): ?>
                 <div class="col mb-4">
                     <div class="card">
@@ -123,6 +124,11 @@
                     </div>
                 </div>
                 <?php endforeach; ?>
+            <?php else: ?>
+                <div class="col mb-4">
+                    <p>Masih belum ada feedback nih.</p>
+                </div>
+            <?php endif;?>
                     <!-- <div class="card">
                         <img src="..." class="card-img-top" alt="...">
                         <div class="card-body">
