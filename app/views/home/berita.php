@@ -69,8 +69,8 @@
             }
             ?>'); height:480px; background-size:cover; background-position:center">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5><?= $data['berita']->articles[0]->title; ?></h5>
-                    <p><?= $data['berita']->articles[0]->description; ?></p>
+                    <h5 style="text-shadow: 1px 1px 2px black;"><?= $data['berita']->articles[0]->title; ?></h5>
+                    <p style="text-shadow: 1px 1px 2px black;"><?= $data['berita']->articles[0]->description; ?></p>
                 </div>
             </div>
             <?php
@@ -86,8 +86,8 @@
             // echo $data['berita']->articles[$i]->urlToImage;
              ?>'); height:480px; background-size:cover; background-position:center">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5><?= $data['berita']->articles[$i]->title; ?></h5>
-                    <p><?= $data['berita']->articles[$i]->description; ?></p>
+                    <h5 style="text-shadow: 1px 1px 2px black;"><?= $data['berita']->articles[$i]->title; ?></h5>
+                    <p style="text-shadow: 1px 1px 2px black;"><?= $data['berita']->articles[$i]->description; ?></p>
                 </div>
             </div>
             <?php endfor; ?>
@@ -95,7 +95,7 @@
     </div>
 
     <div class="jumbotron">
-        <p class="lead">Ketika harapan tampak tidak ada harapan, teruslah berjuang. Ini adalah masa-masa sulit. Saat kita keluar bersama, kita akan memiliki dunia yang lebih baik dan hati yang lebih bersih</p>
+        <p class="lead text-justify">Ketika harapan tampak tidak ada harapan, teruslah berjuang. Ini adalah masa-masa sulit. Saat kita keluar bersama, kita akan memiliki dunia yang lebih baik dan hati yang lebih bersih</p>
     </div>
 
     <section id="berita">
@@ -115,7 +115,7 @@
                 ?>" alt="" width=280>
             </div>
             <div class="berita-content">
-                <h3 class="berita-title"><a href="<?= $data['berita']->articles[$i]->url; ?>"><?= $data['berita']->articles[$i]->title; ?></a></h3>
+                <h3 class="berita-title text-justify"><a href="<?= $data['berita']->articles[$i]->url; ?>"><?= $data['berita']->articles[$i]->title; ?></a></h3>
                 <p class="berita-desc text-justify"><?= $data['berita']->articles[$i]->description; ?></p>
             </div>
         </div>
