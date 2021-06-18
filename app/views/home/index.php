@@ -70,9 +70,9 @@
         <div class="col-md-5">
             <div class="row mt-3 pb-3">
             <div class="col">
-                    <h2>Awareness Raising COVID-19 yang Berkesetaraan Gender dan Inklusif</h2>
-                    <hr size="70" noshade>
-                    <p>Video Awareness Raising COVID-19 yang Berkesetaraan Gender dan Inklusif - Yayasan Plan International Indonesia dan Kementerian Kesehatan</p>
+                <h2 class="text-justify">Awareness Raising COVID-19 yang Berkesetaraan Gender dan Inklusif</h2>
+                <hr size="70" noshade>
+                <p class="text-justify">Video Awareness Raising COVID-19 yang Berkesetaraan Gender dan Inklusif - Yayasan Plan International Indonesia dan Kementerian Kesehatan</p>
             </div>
             </div>
         </div>
